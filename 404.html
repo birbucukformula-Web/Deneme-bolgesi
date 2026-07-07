@@ -4,15 +4,17 @@
     <meta charset="utf-8" />
     <title>1.5 Adana Formula Student</title>
     <script>
-      // GitHub Pages SPA redirect trick
-      // Kaynak: https://github.com/rafgraph/spa-github-pages
-      var segmentCount = 1;
+      // Single Page Apps for GitHub Pages - rafgraph/spa-github-pages
+      // https://github.com/rafgraph/spa-github-pages
+      // segmentCount = 1 çünkü proje sayfası (repo adı = 1 segment)
+      var pathSegmentsToKeep = 1;
+
       var l = window.location;
       l.replace(
         l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-        l.pathname.split('/').slice(0, 1 + segmentCount).join('/') + '/?p=/' +
-        l.pathname.slice(1).split('/').slice(segmentCount).join('/').replace(/&/g, '~and~') +
-        (l.search ? '&q=' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+        l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
         l.hash
       );
     </script>
