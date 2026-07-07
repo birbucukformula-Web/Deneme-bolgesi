@@ -1,0 +1,185 @@
+/* =========================================
+   HERO BÖLÜMÜ
+========================================= */
+.surd-hero { 
+  background: var(--surface); 
+  border-bottom: 1px solid var(--border); 
+  padding: 180px 0 100px; 
+}
+.surd-hero h1 { 
+  font-size: clamp(3rem, 8vw, 7rem); 
+  line-height: 1; 
+  margin-top: 8px; 
+}
+
+/* =========================================
+   YENİ: 4'LÜ FOTOĞRAF GRİDİ
+========================================= */
+.surd-photos-section {
+  position: relative;
+  z-index: 10;
+}
+.surd-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  /* Hero bölümünün üzerine hafif taşması için negatif margin */
+  margin-top: -50px; 
+  margin-bottom: 60px;
+}
+.surd-photo-item img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  transition: transform 0.3s ease;
+}
+.surd-photo-item img:hover {
+  transform: translateY(-5px);
+}
+
+/* =========================================
+   TEMEL YAKLAŞIMLAR (PILLARS)
+========================================= */
+.pillars-section { 
+  background: var(--bg); 
+}
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 8px;
+}
+.pillar-card { 
+  padding: 40px 32px; 
+}
+.pillar-icon { 
+  font-size: 36px; 
+  display: block; 
+  margin-bottom: 20px; 
+}
+.pillar-card h3 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* =========================================
+   YENİ: DETAYLI İÇERİK & RAPOR ALANI
+========================================= */
+.surd-detailed-content { 
+  background: var(--bg); 
+  padding: 40px 0 80px;
+}
+.surd-report-box { 
+  max-width: 800px; 
+}
+.report-section h3 {
+  font-family: var(--font-display);
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+.report-section p {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+/* Biliyor muydunuz? Kartı */
+.fun-fact-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 24px 32px;
+  border-radius: 8px;
+  border-left: 4px solid var(--accent, #e50000);
+}
+.fun-fact-card h4 {
+  font-size: 18px;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+.fun-fact-card p {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* =========================================
+   HEDEFLER / TIMELINE
+========================================= */
+.goals-section { 
+  background: var(--surface); 
+}
+.timeline {
+  position: relative;
+  margin-top: 8px;
+  padding-left: 24px;
+  border-left: 2px solid var(--border);
+}
+.timeline-item {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 32px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.timeline-item:last-child { 
+  border-bottom: none; 
+}
+.timeline-dot {
+  position: absolute;
+  left: -33px;
+  top: 38px;
+  width: 14px;
+  height: 14px;
+  background: var(--accent); /* Kırmızı nokta */
+  border: 2px solid var(--bg);
+}
+.timeline-year {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 900;
+  color: var(--accent); /* Kırmızı yazı */
+  min-width: 100px;
+  line-height: 1;
+}
+.timeline-text {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  padding-top: 10px;
+}
+
+/* =========================================
+   MOBİL UYUMLULUK (RESPONSIVE)
+========================================= */
+@media (max-width: 900px) {
+  .pillars-grid { 
+    grid-template-columns: 1fr; 
+  }
+  .surd-photo-grid {
+    grid-template-columns: repeat(2, 1fr); /* Tablette yan yana 2 foto */
+  }
+}
+
+@media (max-width: 600px) {
+  .surd-photo-grid {
+    grid-template-columns: 1fr; /* Mobilde alt alta tek foto */
+    margin-top: 0; /* Mobilde taşmayı iptal et */
+  }
+  .timeline-item {
+    flex-direction: column;
+    gap: 8px;
+    padding: 24px 0;
+  }
+  .timeline-dot {
+    top: 30px;
+  }
+  .timeline-year {
+    font-size: 36px;
+  }
+}

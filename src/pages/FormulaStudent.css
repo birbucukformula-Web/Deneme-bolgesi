@@ -1,0 +1,184 @@
+/* =========================================
+   HERO BÖLÜMÜ
+========================================= */
+.fs-page-hero {
+  padding: 180px 0 100px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+/* =========================================
+   GALERİ SLIDER 
+========================================= */
+.fs-gallery-section {
+  background: var(--bg);
+  padding: 60px 0 20px;
+}
+.fs-slider-container {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+.fs-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+.fs-slide.active {
+  opacity: 1;
+}
+
+/* Slider Butonları */
+.fs-slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.2);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+.fs-slider-btn:hover { background: var(--accent); border-color: var(--accent); }
+.fs-slider-btn.prev { left: 20px; }
+.fs-slider-btn.next { right: 20px; }
+
+/* Alt Noktalar */
+.fs-slider-dots {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  z-index: 10;
+}
+.fs-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.fs-dot.active { background: var(--accent); }
+
+/* =========================================
+   NEDİR BÖLÜMÜ
+========================================= */
+.fs-info-section {
+  background: var(--bg);
+  padding: 40px 0 80px;
+}
+.fs-info-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  padding: 40px 48px;
+  border-radius: 8px;
+}
+.fs-info-box h2 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; }
+
+/* =========================================
+   ETAPLAR BÖLÜMÜ
+========================================= */
+.fs-stages-section {
+  background: var(--surface);
+  padding: 80px 0;
+}
+.category-title {
+  font-family: var(--font-display);
+  font-size: 28px;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 16px;
+}
+.stages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+.stage-card {
+  position: relative;
+  padding: 32px 24px;
+  background: var(--bg);
+  border-top: 2px solid transparent;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.stage-card:hover { border-top-color: var(--accent); transform: translateY(-5px); }
+.stage-score {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--accent);
+  opacity: 0.8;
+}
+.stage-score span { font-size: 14px; color: var(--text-secondary); }
+.stage-card h4 {
+  font-size: 20px;
+  margin-top: 8px;
+  padding-right: 50px; /* Puan ile çakışmasın diye */
+}
+.stage-en {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-secondary);
+  letter-spacing: 1px;
+  display: block;
+  margin-top: 4px;
+}
+
+/* =========================================
+   DİĞER DETAYLAR (Çıktılar & Kurallar)
+========================================= */
+.fs-details-section {
+  background: var(--bg);
+  padding: 80px 0 120px;
+}
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+.detail-card {
+  padding: 48px;
+}
+.detail-icon {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+.detail-card h3 {
+  font-size: 22px;
+  text-transform: uppercase;
+}
+
+/* =========================================
+   MOBİL UYUMLULUK
+========================================= */
+@media (max-width: 900px) {
+  .fs-slider-container { height: 350px; }
+  .details-grid { grid-template-columns: 1fr; }
+  .fs-info-box { padding: 32px 24px; }
+}
+@media (max-width: 600px) {
+  .fs-slider-container { height: 250px; }
+  .fs-slider-btn { width: 40px; height: 40px; font-size: 16px; }
+}

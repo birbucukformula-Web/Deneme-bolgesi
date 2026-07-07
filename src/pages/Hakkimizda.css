@@ -1,0 +1,223 @@
+/* PAGE HERO */
+.page-hero {
+  padding: 180px 0 100px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+.page-hero h1 {
+  font-size: clamp(3rem, 8vw, 7rem);
+  line-height: 1;
+  margin-top: 8px;
+}
+.page-hero-sub {
+  margin-top: 24px;
+  font-family: var(--font-mono);
+  font-size: 15px;
+  color: var(--text-secondary);
+  letter-spacing: 1px;
+}
+
+/* STORY */
+.story-section { background: var(--bg); }
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.story-text h2 { font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.1; }
+
+.story-tags {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.story-tag {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: var(--accent);
+  border: 1px solid var(--border);
+  padding: 8px 16px;
+}
+
+.story-img {
+  position: relative;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.story-img img { width: 100%; height: 480px; object-fit: cover; display: block; }
+.story-img.img-placeholder {
+  height: 480px;
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-bracket {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+}
+.img-bracket-tl { top: 12px; left: 12px; border-top: 2px solid var(--accent); border-left: 2px solid var(--accent); }
+.img-bracket-br { bottom: 12px; right: 12px; border-bottom: 2px solid var(--accent); border-right: 2px solid var(--accent); }
+
+
+/* =========================================
+   VİZYON VE MİSYON (YENİ EKLENDİ)
+========================================= */
+.vision-mission-section {
+  background: var(--surface);
+  padding: 80px 0;
+}
+.vm-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+.vm-card {
+  padding: 48px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--accent);
+  border-radius: 8px;
+}
+.vm-icon {
+  font-size: 48px;
+  margin-bottom: 24px;
+}
+.vm-card h3 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.vm-card p {
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+/* =========================================
+   ATÖLYEMİZ (YENİ EKLENDİ)
+========================================= */
+.workshop-section {
+  background: var(--bg);
+  padding: 80px 0 120px;
+}
+.workshop-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.workshop-img-wrapper {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+.workshop-main-img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.workshop-img-wrapper:hover .workshop-main-img {
+  transform: scale(1.03);
+}
+.workshop-text h2 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1;
+}
+
+
+/* =========================================
+   TEAM (İleride lazım olursa diye silinmedi)
+========================================= */
+.team-section { background: var(--surface); }
+.dept-block { margin-bottom: 64px; }
+.dept-header {
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.dept-header span {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--accent);
+  letter-spacing: 2px;
+}
+.members-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+.member-card {
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+}
+.member-photo-wrap {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--border);
+  transition: border-color 0.3s;
+}
+.member-card:hover .member-photo-wrap { border-color: var(--accent); }
+.member-photo-wrap img { width: 100%; height: 100%; object-fit: cover; }
+.member-initials {
+  width: 100%;
+  height: 100%;
+  background: var(--bg);
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--accent);
+}
+.member-info h4 {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.member-info span {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 1px;
+  margin-top: 4px;
+  display: block;
+}
+
+
+/* =========================================
+   MOBİL UYUMLULUK (HEPSİ BİRLEŞTİRİLDİ)
+========================================= */
+@media (max-width: 900px) {
+  /* Hikaye Kısmı */
+  .story-grid { grid-template-columns: 1fr; }
+  .story-img img { height: 320px; }
+  
+  /* Vizyon Misyon */
+  .vm-grid { grid-template-columns: 1fr; }
+  
+  /* Atölyemiz */
+  .workshop-grid { 
+    grid-template-columns: 1fr; 
+    gap: 32px;
+  }
+  .workshop-main-img { height: 350px; }
+}

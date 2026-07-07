@@ -1,0 +1,182 @@
+/* CAR HERO */
+.car-hero { padding: 0; }
+.car-hero-bg {
+  position: relative;
+  height: 100vh;
+  min-height: 560px;
+  background: #111;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+}
+.car-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10,10,10,0.95) 30%, rgba(10,10,10,0.2) 100%);
+}
+.car-hero-content {
+  position: relative;
+  z-index: 2;
+  padding-bottom: 80px;
+}
+.car-hero-title {
+  font-size: clamp(5rem, 16vw, 14rem);
+  line-height: 0.9;
+  letter-spacing: -2px;
+}
+.inline-block { display: inline-block; }
+
+/* SPECS */
+.specs-section { background: var(--surface); }
+.specs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 8px;
+}
+.spec-item {
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.spec-key {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--accent);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.spec-val {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+/* BUILD */
+.build-section { background: var(--bg); }
+.build-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 8px;
+}
+.build-item img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+  border: 1px solid var(--border);
+}
+.build-caption {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-secondary);
+  letter-spacing: 1px;
+  padding: 10px 0;
+  text-transform: uppercase;
+}
+.build-placeholder {
+  padding: 80px 0;
+  text-align: center;
+  border: 1px dashed var(--border);
+}
+
+/* GALLERY */
+.gallery-section { background: var(--surface); }
+.gallery-masonry {
+  columns: 3;
+  column-gap: 16px;
+  margin-top: 8px;
+}
+.gallery-item {
+  break-inside: avoid;
+  margin-bottom: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  cursor: zoom-in;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.gallery-item:hover { border-color: var(--accent); transform: scale(1.01); }
+.gallery-item img { width: 100%; display: block; }
+.gallery-empty {
+  padding: 60px 0;
+  border: 1px dashed var(--border);
+  text-align: center;
+}
+
+/* LIGHTBOX */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+}
+.lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; }
+.lightbox-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  width: 44px;
+  height: 44px;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s, color 0.2s;
+}
+.lightbox-close:hover { border-color: var(--accent); color: var(--accent); }
+
+/* 2025 */
+.car-2025-section { background: var(--bg); }
+.car-2025-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  margin-top: 8px;
+}
+.car-2025-img { border: 1px solid var(--border); overflow: hidden; }
+.car-2025-img img { width: 100%; height: 380px; object-fit: cover; display: block; }
+.car-2025-img.img-placeholder-box { height: 380px; background: var(--surface); }
+.car-2025-specs h2 { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1; }
+.specs-list { display: flex; flex-direction: column; gap: 0; }
+.specs-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.specs-key {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-secondary);
+  letter-spacing: 1px;
+}
+.specs-val {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+@media (max-width: 900px) {
+  .specs-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-masonry { columns: 2; }
+  .car-2025-inner { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .specs-grid { grid-template-columns: 1fr; }
+  .gallery-masonry { columns: 1; }
+}

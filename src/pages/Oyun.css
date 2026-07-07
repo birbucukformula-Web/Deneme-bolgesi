@@ -1,0 +1,80 @@
+.oyun-hero { background: var(--surface); border-bottom: 1px solid var(--border); padding: 180px 0 100px; }
+.oyun-hero h1 { font-size: clamp(3rem, 8vw, 7rem); line-height: 1; margin-top: 8px; }
+
+.game-showcase { background: var(--bg); }
+.game-media {
+  position: relative;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  max-height: 600px;
+}
+.game-media img, .game-media video {
+  width: 100%;
+  max-height: 600px;
+  object-fit: cover;
+  display: block;
+}
+.game-media.game-media-placeholder {
+  height: 500px;
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.game-media-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10,10,10,0.5) 0%, transparent 60%);
+  pointer-events: none;
+}
+/* Brackets */
+.gb { position: absolute; width: 28px; height: 28px; }
+.gb-tl { top: 16px;  left: 16px;  border-top: 2px solid var(--accent); border-left:  2px solid var(--accent); }
+.gb-tr { top: 16px;  right: 16px; border-top: 2px solid var(--accent); border-right: 2px solid var(--accent); }
+.gb-bl { bottom: 16px; left: 16px;  border-bottom: 2px solid var(--accent); border-left:  2px solid var(--accent); }
+.gb-br { bottom: 16px; right: 16px; border-bottom: 2px solid var(--accent); border-right: 2px solid var(--accent); }
+
+.store-section { background: var(--surface); }
+.store-buttons { display: flex; gap: 24px; flex-wrap: wrap; }
+.store-btn {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 32px;
+  min-width: 220px;
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+.store-btn:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 24px var(--accent-glow);
+  transform: translateY(-3px);
+}
+.store-btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.store-icon-play  { color: #34A853; }
+.store-icon-apple { color: var(--text-primary); }
+.store-btn-text { display: flex; flex-direction: column; }
+.store-sub {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-secondary);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.store-name {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-primary);
+}
+
+@media (max-width: 600px) {
+  .store-buttons { flex-direction: column; }
+  .store-btn { min-width: unset; width: 100%; }
+}

@@ -1,0 +1,162 @@
+/* ===========================
+   NAVBAR BARI
+   =========================== */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 300;                  /* En üstte */
+  background: rgba(5,5,5,0.88);
+  border-bottom: 1px solid rgba(232,0,13,0.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: background 0.3s;
+}
+.navbar.scrolled { background: rgba(5,5,5,0.97); }
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ===========================
+   LOGO
+   =========================== */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  transition: opacity 0.2s;
+}
+.nav-logo:hover { opacity: 0.82; }
+
+/* ===========================
+   MASAÜSTÜ LİNKLER
+   =========================== */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 28px;
+  align-items: center;
+}
+.nav-link {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  transition: color 0.2s;
+  position: relative;
+  padding-bottom: 4px;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 2px;
+  background: var(--accent);
+  transition: width 0.2s;
+}
+.nav-link:hover { color: #fff; }
+.nav-link:hover::after,
+.nav-link.active::after { width: 100%; }
+.nav-link.active { color: #fff; }
+
+/* ===========================
+   HAMBURGER
+   =========================== */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  /* Navbar barıyla aynı z-index grubunda — zaten nav-inner içinde */
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+  pointer-events: none;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ===========================
+   MOBİL MENÜ
+   navbar'ın DIŞINDA render ediliyor
+   z-index: 200 → navbar(300) altında
+   bu yüzden hamburger her zaman görünür
+   =========================== */
+.mobile-menu {
+  position: fixed;
+  top: 68px;           /* navbar yüksekliği */
+  left: 0; right: 0; bottom: 0;
+  z-index: 200;
+  background: #070707;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  /* Kapalı: ekran dışına it */
+  transform: translateX(100%);
+  transition: transform 0.38s cubic-bezier(.4,0,.2,1);
+  pointer-events: none;
+}
+.mobile-menu.open {
+  transform: translateX(0);
+  pointer-events: all;
+}
+
+.mobile-menu ul {
+  list-style: none;
+  text-align: center;
+  padding: 0; margin: 0;
+  width: 100%;
+}
+.mobile-menu ul li { margin: 16px 0; }
+
+.mobile-link {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: rgba(255,255,255,0.55);
+  transition: color 0.2s, letter-spacing 0.2s;
+  display: inline-block;
+}
+.mobile-link:hover,
+.mobile-link.active {
+  color: var(--accent);
+  letter-spacing: 4px;
+}
+
+/* Karanlık overlay — menü arkası */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 199;        /* mobile-menu'nün 1 altında */
+  background: rgba(0,0,0,0.5);
+}
+
+/* ===========================
+   RESPONSIVE
+   =========================== */
+@media (max-width: 900px) {
+  .nav-links  { display: none; }
+  .hamburger  { display: flex; }
+}
