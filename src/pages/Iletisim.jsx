@@ -111,7 +111,10 @@ export default function Iletisim() {
             <span className="section-label">📍 ADRES</span>
             {/* EDIT: Gerçek adresi buraya ekle */}
             <p className="text-secondary mt-8" style={{ fontSize: '16px' }}>
-              Çukurova Üniversitesi, Adana, Türkiye
+              Çukurova Üniversitesi Tömer Binası
+            </p>
+            <p className="text-secondary" style={{ fontSize: '16px' }}>
+               Sarıçam/Adana, Türkiye
             </p>
           </div>
         </div>
