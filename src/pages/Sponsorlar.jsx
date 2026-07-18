@@ -1,25 +1,19 @@
 import { Link } from 'react-router-dom'
 import './Sponsorlar.css'
 
+// Klasördeki tüm resimleri tek seferde otomatik içeri alıyoruz
+const images = import.meta.glob('/src/assets/images/sponsor-images/*.{png,jpg,jpeg,svg}', { eager: true });
 /* TIER LİSTESİ: En üste 'ANA SPONSORLAR' eklendi */
 const tiers = [
   {
-    label: 'ANA SPONSORLAR',
-    icon: '💎',
-    cls: 'tier-main', /* Bu class'a özel devasa CSS yazdık */
-    sponsors: [
-      { name: 'Emre Makina', logo: '/src/assets/images/sponsor-images/emremak-güncel.png', href: 'https://www.emremakinasan.com.tr/' },
-      { name: 'Bomak', logo: '/src/assets/images/sponsor-images/bomak.png', href: 'https://bomak.com.tr/' },
-      { name: 'Beauty Max', logo: '/src/assets/images/sponsor-images/beautymax.jpg', href: 'https://example3.com' },
-    ],
-  },
-  {
     label: 'ALTIN SPONSORLAR',
     icon: '🥇',
-    cls: 'tier-gold',
+    cls: 'tier-main',
     sponsors: [
-      { name: 'Numesys', logo: '/src/assets/images/sponsor-images/numesys.png', href: 'https://www.numesys.com.tr/' },
-      { name: 'Temsa', logo: '/src/assets/images/sponsor-images/temsa.png', href: 'https://www.temsa.com/tr/tr' },
+      { name: 'Avioni', logo: 'avioni_logo.png', href: 'https://avionitech.com//' },
+      { name: 'OnPlus', logo: 'onplus-sitelogo.png', href: 'https://www.onplus.com.tr/' },
+      { name: 'Germaksan', logo: 'germaksan-logo.jpg', href: 'https://germaksan.com.tr/' },
+      { name: 'NoktaDil', logo: 'noktadil-logo.jpg', href: 'https://www.noktadil.com.tr/' }
     ],
   },
   {
@@ -27,9 +21,12 @@ const tiers = [
     icon: '🥈',
     cls: 'tier-silver',
     sponsors: [
-      { name: 'KORDSA', logo: '/src/assets/images/sponsor-images/kordsa.png', href: 'https://kordsa.com/tr' },
-      { name: 'İstanbul Filament', logo: '/src/assets/images/sponsor-images/istanbul filament.png', href: 'https://www.istanbulfilament.com/' },
-      { name: 'KY Kırtasiye', logo: '/src/assets/images/sponsor-images/ky-kirtasiye.png', href: 'https://www.kykirtasiye.com/' },
+      { name: 'Boğaziçi Yazılım', logo: 'boazici-yazilim-logo.png', href: 'https://www.bogaziciyazilim.com/' },
+      { name: 'Cubicl', logo: 'cubicl-logo.png', href: 'https://cubicl.io/tr' },
+      { name: 'Makersan', logo: 'makersan-logo.jpeg', href: 'https://www.makersan.com.tr/' },
+      { name: 'Ateks', logo: 'ateks-logo.png', href: 'https://www.ateks.international/anasayfa-muhendislik' },
+      { name: 'Şifa Ana', logo: 'sifa-ana-logo.png', href: 'https://www.sifaana.com.tr/' },
+      { name: 'Petka', logo: 'petka-logo.png', href: 'https://www.petkakalip.com.tr/' },
     ],
   },
   {
@@ -37,9 +34,25 @@ const tiers = [
     icon: '🥉',
     cls: 'tier-bronze',
     sponsors: [
-      { name: 'Giriş Kırtasiye', logo: '/src/assets/images/sponsor-images/giris-kirtasiye.png', href: 'https://example10.com' },
-      { name: 'GSB', logo: '/src/assets/images/sponsor-images/gsb.png', href: 'https://gsb.gov.tr/tr' },
-      { name: 'Bilgehan Mak', logo: '/src/assets/images/sponsor-images/bilgehanmak.png', href: 'https://www.bilgehanltd.com/' },
+      { name: 'ORS', logo: 'ors-logo.png', href: 'https://www.ors.com.tr/' }, 
+      { name: 'BeautyMax', logo: 'beautymax.jpg' },
+    ],
+  },
+  {
+    label: 'DESTEKÇİ SPONSORLAR',
+    icon: '🤝',
+    cls: 'tier-other',
+    sponsors: [
+      { name: 'MSA', logo: 'MSA-logo.png', href: 'https://msaglobalgumruk.com/' },
+      { name: 'Acımak', logo: 'acimak-logo.png', href: 'https://www.acimak.com.tr/' },
+      { name: 'Cebeci', logo: 'cebeci-logo.png' },
+      { name: 'Temsa', logo: 'temsa.png', href: 'https://www.temsa.com/tr/' },
+      { name: 'Tasargem', logo: 'tasargem-logo.png', href: 'https://tasargem.com/' },
+      { name: 'Şanal Petrol', logo: 'sanalpetrol-logo.png' },
+      { name: 'Aslan Çelik Boru', logo: 'aslancelik-logo.jpg', href: 'https://www.aslancelikboru.com/' },
+      { name: 'Groseri', logo: 'groseri-logo.png', href: 'https://www.groseri.com.tr/' },
+      { name: 'Dimes', logo: 'dimes-logo.png', href: 'https://www.groseri.com.tr/' },
+      { name: 'Han Kahve', logo: 'hankahve-logo.jpg', href: 'https://hankurukahvecisi.com/' }
     ],
   },
 ]
@@ -54,10 +67,13 @@ const benefits = [
 ]
 
 function SponsorCard({ s, size }) {
+  // Hafızadaki resim havuzundan ilgili logonun Vite yansıma yolunu çekiyoruz
+  const imageSrc = images[`/src/assets/images/sponsor-images/${s.logo}`]?.default || s.logo;
+
   return (
     <a href={s.href} target="_blank" rel="noopener noreferrer" className={`sponsor-card card sponsor-card--${size}`}>
       <img 
-        src={s.logo} 
+        src={imageSrc} 
         alt={s.name} 
         onError={e => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'block' }} 
       />
