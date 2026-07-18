@@ -1,13 +1,4 @@
-import { useState, useEffect } from 'react'
 import './FormulaStudent.css'
-
-/* 4 Tane Kaydırılabilir Galeri Fotoğrafı (Yolları kendine göre ayarlarsın) */
-const galleryImages = [
-  '/src/assets/images/gallery/formula_student0.jpg',
-  '/src/assets/images/gallery/formula_student1.jpg',
-  '/src/assets/images/gallery/formula_student2.jpg',
-  '/src/assets/images/hakkimizda-images/hakkimizda1.jpg',
-]
 
 const staticStages = [
   { title: 'Mühendislik Tasarımı', en: 'Engineering Design', score: '150', desc: 'Bileşenlerin tasarım süreçleri, sonlu elemanlar analizi (FEA), hesaplamalı akışkanlar dinamiği (CFD) ve veri toplama sistemleri (DAQ) çıktılarının akademik bir savunmasıdır.' },
@@ -23,19 +14,6 @@ const dynamicStages = [
 ]
 
 export default function FormulaStudent() {
-  const [currentSlide, setCurrentSlide] = useState(0)
-
-  // Otomatik kaydırma efekti (İstersen süreyi değiştirebilirsin)
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % galleryImages.length)
-    }, 4000)
-    return () => clearInterval(timer)
-  }, [])
-
-  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % galleryImages.length)
-  const prevSlide = () => setCurrentSlide((prev) => (prev === 0 ? galleryImages.length - 1 : prev - 1))
-
   return (
     <>
       {/* HERO SECTION */}
@@ -52,48 +30,30 @@ export default function FormulaStudent() {
         </div>
       </section>
 
-      {/* GALERİ SLIDER (YENİ) */}
-      <section className="fs-gallery-section">
-        <div className="container">
-          <div className="fs-slider-container reveal">
-            {galleryImages.map((img, index) => (
-              <div 
-                key={index} 
-                className={`fs-slide ${index === currentSlide ? 'active' : ''}`}
-                style={{ backgroundImage: `url(${img})` }}
-              />
-            ))}
-            
-            {/* Yön Tuşları */}
-            <button className="fs-slider-btn prev" onClick={prevSlide}>&#10094;</button>
-            <button className="fs-slider-btn next" onClick={nextSlide}>&#10095;</button>
-
-            {/* Alt Noktalar */}
-            <div className="fs-slider-dots">
-              {galleryImages.map((_, index) => (
-                <span 
-                  key={index} 
-                  className={`fs-dot ${index === currentSlide ? 'active' : ''}`} 
-                  onClick={() => setCurrentSlide(index)}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* NEDİR BU FORMULA STUDENT? */}
+      {/* NEDİR BU FORMULA STUDENT? (FOTOĞRAF VE YAZI YAN YANA) */}
       <section className="fs-info-section">
         <div className="container">
-          <div className="fs-info-box reveal">
-            <h2>Formula Student <span className="text-red">Nedir?</span></h2>
-            <h4 className="mt-16">Kavramsal Çerçeve ve Tarihsel Gelişim</h4>
-            <p className="text-secondary mt-16" style={{ lineHeight: '1.9' }}>
-              Formula Student (FS), 1981 yılında Society of Automotive Engineers (SAE) tarafından temelleri atılan, günümüzde ise mühendislik eğitiminin en üst seviye uygulama sahası olarak kabul edilen uluslararası bir tasarım yarışmasıdır. Dünyada her sene 26 farklı ülkede düzenlenmektedir. Organizasyonun temel paradigması; öğrencilerin kuramsal mühendislik nosyonlarını, gerçek zamanlı bir endüstriyel proje döngüsü içerisinde (tasarım, validasyon, üretim ve işletme) test etmelerine olanak tanımaktır.
-            </p>
-            <p className="text-secondary mt-16" style={{ lineHeight: '1.9' }}>
-              Bu ekosistem, sadece bir otomobil inşası değil; karmaşık sistemlerin entegrasyonu, veri odaklı karar verme mekanizmaları ve proje yönetimi disiplinlerinin birleştiği bütüncül bir akademik meydan okumadır.
-            </p>
+          <div className="fs-info-split">
+            {/* SOL: YAZI */}
+            <div className="fs-info-text reveal">
+              <h2>Formula Student <span className="text-red">Nedir?</span></h2>
+              <h4 className="mt-16">Kavramsal Çerçeve ve Tarihsel Gelişim</h4>
+              <p className="text-secondary mt-16" style={{ lineHeight: '1.9' }}>
+                Formula Student (FS), 1981 yılında Society of Automotive Engineers (SAE) tarafından temelleri atılan, günümüzde ise mühendislik eğitiminin en üst seviye uygulama sahası olarak kabul edilen uluslararası bir tasarım yarışmasıdır. Dünyada her sene 26 farklı ülkede düzenlenmektedir. Organizasyonun temel paradigması; öğrencilerin kuramsal mühendislik nosyonlarını, gerçek zamanlı bir endüstriyel proje döngüsü içerisinde (tasarım, validasyon, üretim ve işletme) test etmelerine olanak tanımaktır.
+              </p>
+              <p className="text-secondary mt-16" style={{ lineHeight: '1.9' }}>
+                Bu ekosistem, sadece bir otomobil inşası değil; karmaşık sistemlerin entegrasyonu, veri odaklı karar verme mekanizmaları ve proje yönetimi disiplinlerinin birleştiği bütüncül bir akademik meydan okumadır.
+              </p>
+            </div>
+            
+            {/* SAĞ: GÖRSEL */}
+            <div className="fs-info-img-box reveal reveal-delay-1">
+              <img 
+                src={`${import.meta.env.BASE_URL}images/formula_students.jpg`} 
+                alt="Formula Student Takımı" 
+                className="fs-info-img"
+              />
+            </div>
           </div>
         </div>
       </section>
