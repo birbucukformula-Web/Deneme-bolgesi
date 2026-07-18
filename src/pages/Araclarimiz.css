@@ -1,46 +1,83 @@
-/* CAR HERO */
-.car-hero { padding: 0; }
-.car-hero-bg {
-  position: relative;
-  height: 100vh;
-  min-height: 560px;
-  background: #111;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: flex-end;
-}
-.car-hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(10,10,10,0.95) 30%, rgba(10,10,10,0.2) 100%);
-}
-.car-hero-content {
-  position: relative;
-  z-index: 2;
-  padding-bottom: 80px;
-}
-.car-hero-title {
-  font-size: clamp(5rem, 16vw, 14rem);
-  line-height: 0.9;
-  letter-spacing: -2px;
-}
-.inline-block { display: inline-block; }
+/* ==========================================================================
+   ARAÇLARIMIZ SAYFASI STİLLERİ
+   ========================================================================== */
 
-/* SPECS */
-.specs-section { background: var(--surface); }
+/* ── HEADER BÖLÜMÜ ───────────────────────────────────────────────────────── */
+.araclar-header-section {
+  padding: 120px 0 80px 0;
+  background: var(--bg);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.araclar-header-section .text-secondary {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.araclar-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  justify-content: center;
+}
+
+.araclar-nav a {
+  width: 100%;
+  max-width: 320px;
+  text-align: center;
+}
+
+/* ── SEZON BÖLÜMÜ ────────────────────────────────────────────────────────── */
+.season-section {
+  padding: 80px 0;
+  border-top: 1px solid var(--border);
+}
+
+.season-title-box {
+  margin-bottom: 40px;
+}
+
+.season-title-box h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1;
+}
+
+.season-main-img {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.season-main-img img {
+  width: 100%;
+  height: auto;
+  max-height: 600px;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── TEKNİK ÖZELLİKLER ───────────────────────────────────────────────────── */
 .specs-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
-  margin-top: 8px;
+  margin-top: 24px;
 }
+
 .spec-item {
   padding: 24px 20px;
   display: flex;
   flex-direction: column;
   gap: 8px;
+  background: var(--surface);
 }
+
 .spec-key {
   font-family: var(--font-mono);
   font-size: 12px;
@@ -48,6 +85,7 @@
   letter-spacing: 1px;
   text-transform: uppercase;
 }
+
 .spec-val {
   font-family: var(--font-display);
   font-size: 28px;
@@ -55,128 +93,102 @@
   color: var(--text-primary);
 }
 
-/* BUILD */
-.build-section { background: var(--bg); }
+/* ── YAPIM AŞAMASI (4 FOTOĞRAF YAN YANA) ─────────────────────────────────── */
+.season-build {
+  margin-top: 48px;
+}
+
 .build-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
-  margin-top: 8px;
+  /* Tam 4 sütun (yan yana 4 fotoğraf) */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 24px;
 }
+
+.build-item {
+  display: flex;
+  flex-direction: column;
+}
+
 .build-item img {
   width: 100%;
-  height: 220px;
+  aspect-ratio: 4/3; /* Fotoğrafları 4:3 oranında standartlaştırır */
   object-fit: cover;
   display: block;
   border: 1px solid var(--border);
+  border-radius: 4px;
 }
+
 .build-caption {
   font-family: var(--font-mono);
   font-size: 12px;
   color: var(--text-secondary);
   letter-spacing: 1px;
-  padding: 10px 0;
+  padding: 12px 0 0 0;
   text-transform: uppercase;
-}
-.build-placeholder {
-  padding: 80px 0;
-  text-align: center;
-  border: 1px dashed var(--border);
-}
-
-/* GALLERY */
-.gallery-section { background: var(--surface); }
-.gallery-masonry {
-  columns: 3;
-  column-gap: 16px;
-  margin-top: 8px;
-}
-.gallery-item {
-  break-inside: avoid;
-  margin-bottom: 16px;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  cursor: zoom-in;
-  transition: border-color 0.3s, transform 0.3s;
-}
-.gallery-item:hover { border-color: var(--accent); transform: scale(1.01); }
-.gallery-item img { width: 100%; display: block; }
-.gallery-empty {
-  padding: 60px 0;
-  border: 1px dashed var(--border);
   text-align: center;
 }
 
-/* LIGHTBOX */
-.lightbox {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.92);
-  z-index: 9999;
+/* Yapım Aşaması Placeholder (Eklenecek Kutuları) */
+.build-placeholder-box {
+  width: 100%;
+  aspect-ratio: 4/3;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 32px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px dashed var(--border);
+  border-radius: 4px;
+  text-align: center;
+  padding: 20px;
 }
-.lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; }
-.lightbox-close {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  color: var(--text-primary);
-  width: 44px;
-  height: 44px;
-  font-size: 18px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: border-color 0.2s, color 0.2s;
-}
-.lightbox-close:hover { border-color: var(--accent); color: var(--accent); }
 
-/* 2025 */
-.car-2025-section { background: var(--bg); }
-.car-2025-inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  align-items: center;
-  margin-top: 8px;
+.build-placeholder-box .placeholder-icon {
+  font-size: 24px;
+  margin-bottom: 8px;
+  opacity: 0.5;
 }
-.car-2025-img { border: 1px solid var(--border); overflow: hidden; }
-.car-2025-img img { width: 100%; height: 380px; object-fit: cover; display: block; }
-.car-2025-img.img-placeholder-box { height: 380px; background: var(--surface); }
-.car-2025-specs h2 { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1; }
-.specs-list { display: flex; flex-direction: column; gap: 0; }
-.specs-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 14px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-}
-.specs-key {
+
+.build-placeholder-box p {
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 11px;
   color: var(--text-secondary);
+  text-transform: uppercase;
   letter-spacing: 1px;
-}
-.specs-val {
-  font-family: var(--font-display);
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--text-primary);
+  line-height: 1.4;
 }
 
+/* ── RESPONSİVE (MOBİL UYUM) ─────────────────────────────────────────────── */
+
+/* Tablet boyutları (900px ve altı) */
 @media (max-width: 900px) {
-  .specs-grid { grid-template-columns: repeat(2, 1fr); }
-  .gallery-masonry { columns: 2; }
-  .car-2025-inner { grid-template-columns: 1fr; }
+  .specs-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 sütun */
+  }
+  
+  .build-grid {
+    grid-template-columns: repeat(2, 1fr); /* Tablette 4 fotoğraf 2'şerli alt alta */
+  }
 }
+
+/* Telefon boyutları (600px ve altı) */
 @media (max-width: 600px) {
-  .specs-grid { grid-template-columns: 1fr; }
-  .gallery-masonry { columns: 1; }
+  .specs-grid {
+    grid-template-columns: 1fr; /* 1 sütun */
+  }
+  
+  .build-grid {
+    grid-template-columns: 1fr; /* Mobilde hepsi tek tek alt alta */
+  }
+  
+  .araclar-nav {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .araclar-nav a {
+    width: 100%;
+  }
 }

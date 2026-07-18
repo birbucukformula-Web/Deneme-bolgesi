@@ -5,6 +5,8 @@ import Footer from './components/Footer'
 import Home from './pages/Home'
 import Hakkimizda from './pages/Hakkimizda'
 import Araclarimiz from './pages/Araclarimiz'
+import Arac2025 from './pages/Arac2025'
+import Arac2026 from './pages/Arac2026'
 import FormulaStudent from './pages/FormulaStudent'; 
 import Surdurulebilirlik from './pages/Surdurulebilirlik'
 import Sponsorlar from './pages/Sponsorlar'
@@ -29,6 +31,8 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/hakkimizda" element={<Hakkimizda />} />
           <Route path="/araclarimiz" element={<Araclarimiz />} />
+          <Route path="/2025arac" element={<Arac2025 />} />
+          <Route path="/2026arac" element={<Arac2026 />} />
           <Route path="/formulastudent" element={<FormulaStudent />} />
           <Route path="/surdurulebilirlik" element={<Surdurulebilirlik />} />
           <Route path="/sponsorlar" element={<Sponsorlar />} />
