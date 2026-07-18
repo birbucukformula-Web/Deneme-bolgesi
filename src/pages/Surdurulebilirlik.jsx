@@ -31,13 +31,7 @@ const goals = [
   { year: '2026', text: 'Tam elektrikli şasi ve minimize edilmiş operasyonel karbon ayak izi.' },
 ]
 
-/* Üst Kısımdaki 4'lü Fotoğraf Gridi İçin */
-const headerPhotos = [
-  { src: '/src/assets/images/gallery/formula_student0.jpg', alt: 'Atölye Çalışmaları' },
-  { src: '/src/assets/images/gallery/formula_student1.jpg', alt: 'Ekip Toplantısı' },
-  { src: '/src/assets/images/gallery/formula_student2.jpg', alt: 'Geri Dönüşüm Süreci' },
-  { src: '/src/assets/images/hakkimizda-images/hakkimizda1.jpg', alt: 'Teknik Analiz' },
-]
+const base = import.meta.env.BASE_URL
 
 export default function Surdurulebilirlik() {
   return (
@@ -56,15 +50,52 @@ export default function Surdurulebilirlik() {
         </div>
       </section>
 
-      {/* 4'LÜ FOTOĞRAF GRİDİ (YENİ EKLEDİĞİMİZ YER) */}
-      <section className="surd-photos-section">
+      {/* GERİ DÖNÜŞÜM EL KİTABI (YENİ REKLAM BÖLÜMÜ) */}
+      <section className="handbook-section">
         <div className="container">
-          <div className="surd-photo-grid">
-            {headerPhotos.map((p, i) => (
-              <div key={i} className="surd-photo-item reveal" style={{transitionDelay: `${i * 0.1}s`}}>
-                <img src={p.src} alt={p.alt} />
+          <div className="handbook-split reveal">
+            {/* SOL: KİTAP KAPAĞI */}
+            <div className="handbook-img-box">
+              <img 
+                src={`${base}images/el_kitabi_kapak.png`} 
+                alt="Geri Dönüşüm El Kitabı Kapağı" 
+                className="handbook-img"
+              />
+            </div>
+
+            {/* SAĞ: METİN & İNDİRME */}
+            <div className="handbook-text">
+              <h2 style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2rem)', lineHeight: '1.2' }}>
+                Dünyamızın Geleceğinde de <span className="text-red">İz Bırakıyoruz!</span>
+              </h2>
+              <p className="text-secondary mt-16" style={{ fontSize: '0.95rem', lineHeight: '1.6' }}>
+                Mühendislik, yalnızca araç üretmek değil; doğaya saygılı sistemler tasarlamaktır. Sürdürülebilirlik bilincimizi kurumsal hafızamıza işlemek ve gelecek nesillere aktarmak amacıyla hazırladığımız <strong>1.5 Adana Formula Takımı Geri Dönüşüm El Kitabı</strong>'nı gururla sunuyoruz.
+              </p>
+
+              <div className="stats-box mt-20">
+                <h4 className="text-red mb-12" style={{ fontSize: '1rem' }}>İlk Yarıyıl Verilerimiz (6 Ay)</h4>
+                <ul className="stats-list">
+                  <li><span className="icon">♻️</span> <strong>7.220 gr</strong> Alüminyum</li>
+                  <li><span className="icon">♻️</span> <strong>24.925 gr</strong> Plastik</li>
+                  <li><span className="icon">♻️</span> <strong>3.490 gr</strong> Elektronik</li>
+                  <li><span className="icon">♻️</span> <strong>7.860 gr</strong> Karton</li>
+                  <li><span className="icon">♻️</span> <strong>483 gr</strong> Kalem Pil</li>
+                </ul>
+                <p className="mt-12 text-primary" style={{ fontSize: '0.9rem' }}><strong>Toplamda ~160 kg CO₂e emisyon faydası!</strong></p>
               </div>
-            ))}
+
+              <div className="mt-24">
+                <a 
+                  href={`${base}docs/15AdanaFormula_GeriDonusumElKitabi.pdf`} 
+                  download 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="btn-primary btn-sm"
+                >
+                  Kitabı İndirmek İçin Tıklayın ↓
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>

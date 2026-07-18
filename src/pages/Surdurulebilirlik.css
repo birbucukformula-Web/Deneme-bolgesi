@@ -1,64 +1,143 @@
 /* =========================================
    HERO BÖLÜMÜ
 ========================================= */
-.surd-hero { 
-  background: var(--surface); 
-  border-bottom: 1px solid var(--border); 
-  padding: 180px 0 100px; 
+.surd-hero {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 180px 0 100px;
 }
-.surd-hero h1 { 
-  font-size: clamp(3rem, 8vw, 7rem); 
-  line-height: 1; 
-  margin-top: 8px; 
+
+.surd-hero h1 {
+  font-size: clamp(3rem, 8vw, 7rem);
+  line-height: 1;
+  margin-top: 8px;
 }
 
 /* =========================================
-   YENİ: 4'LÜ FOTOĞRAF GRİDİ
+   YENİ: GERİ DÖNÜŞÜM EL KİTABI BÖLÜMÜ
 ========================================= */
-.surd-photos-section {
+.handbook-section {
   position: relative;
   z-index: 10;
+  margin-top: -50px;
+  margin-bottom: 0px;
 }
-.surd-photo-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  /* Hero bölümünün üzerine hafif taşması için negatif margin */
-  margin-top: -50px; 
-  margin-bottom: 60px;
-}
-.surd-photo-item img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-  border-radius: 8px;
+
+.handbook-split {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  background: var(--surface);
   border: 1px solid var(--border);
-  transition: transform 0.3s ease;
+  border-radius: 12px;
+  padding: 32px 40px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
 }
-.surd-photo-item img:hover {
-  transform: translateY(-5px);
+
+.handbook-img-box {
+  flex: 0 0 30%;
+  /* Kapak resmine %30 alan ver */
+  display: flex;
+  justify-content: center;
+}
+
+.handbook-img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: -10px 10px 30px rgba(0, 0, 0, 0.7);
+  transition: transform 0.4s ease;
+}
+
+.handbook-img:hover {
+  transform: translateY(-10px) rotate(-2deg);
+}
+
+.handbook-text {
+  flex: 1;
+}
+
+/* Veri Tablosu */
+.stats-box {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 24px;
+  border-radius: 8px;
+}
+
+.stats-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.stats-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  color: var(--text-secondary);
+}
+
+.stats-list li strong {
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+}
+
+/* Bilgi Kutusu */
+.info-alert {
+  display: flex;
+  gap: 16px;
+  background: rgba(229, 0, 0, 0.05);
+  border-left: 4px solid var(--accent);
+  padding: 16px 24px;
+  border-radius: 4px;
+}
+
+.info-icon {
+  font-size: 24px;
+}
+
+.info-alert p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.info-alert strong {
+  color: var(--text-primary);
 }
 
 /* =========================================
    TEMEL YAKLAŞIMLAR (PILLARS)
 ========================================= */
-.pillars-section { 
-  background: var(--bg); 
+.pillars-section {
+  background: var(--bg);
+  padding-top: 20px; /* Üstteki bölümle arasındaki boşluğu kısmak için padding'i ez */
 }
+
 .pillars-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 24px;
   margin-top: 8px;
 }
-.pillar-card { 
-  padding: 40px 32px; 
+
+.pillar-card {
+  padding: 40px 32px;
 }
-.pillar-icon { 
-  font-size: 36px; 
-  display: block; 
-  margin-bottom: 20px; 
+
+.pillar-icon {
+  font-size: 36px;
+  display: block;
+  margin-bottom: 20px;
 }
+
 .pillar-card h3 {
   font-family: var(--font-display);
   font-size: 22px;
@@ -70,23 +149,27 @@
 /* =========================================
    YENİ: DETAYLI İÇERİK & RAPOR ALANI
 ========================================= */
-.surd-detailed-content { 
-  background: var(--bg); 
+.surd-detailed-content {
+  background: var(--bg);
   padding: 40px 0 80px;
 }
-.surd-report-box { 
-  max-width: 800px; 
+
+.surd-report-box {
+  max-width: 800px;
 }
+
 .report-section h3 {
   font-family: var(--font-display);
   font-size: 24px;
   margin-bottom: 16px;
 }
+
 .report-section p {
   font-size: 16px;
   color: var(--text-secondary);
   line-height: 1.8;
 }
+
 /* Biliyor muydunuz? Kartı */
 .fun-fact-card {
   background: var(--surface);
@@ -95,11 +178,13 @@
   border-radius: 8px;
   border-left: 4px solid var(--accent, #e50000);
 }
+
 .fun-fact-card h4 {
   font-size: 18px;
   color: var(--text-primary);
   margin-bottom: 12px;
 }
+
 .fun-fact-card p {
   font-size: 15px;
   color: var(--text-secondary);
@@ -110,43 +195,51 @@
 /* =========================================
    HEDEFLER / TIMELINE
 ========================================= */
-.goals-section { 
-  background: var(--surface); 
+.goals-section {
+  background: var(--surface);
 }
+
 .timeline {
   position: relative;
   margin-top: 8px;
   padding-left: 24px;
   border-left: 2px solid var(--border);
 }
+
 .timeline-item {
   position: relative;
   display: flex;
   align-items: flex-start;
   gap: 24px;
   padding: 32px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
-.timeline-item:last-child { 
-  border-bottom: none; 
+
+.timeline-item:last-child {
+  border-bottom: none;
 }
+
 .timeline-dot {
   position: absolute;
   left: -33px;
   top: 38px;
   width: 14px;
   height: 14px;
-  background: var(--accent); /* Kırmızı nokta */
+  background: var(--accent);
+  /* Kırmızı nokta */
   border: 2px solid var(--bg);
 }
+
 .timeline-year {
   font-family: var(--font-display);
   font-size: 48px;
   font-weight: 900;
-  color: var(--accent); /* Kırmızı yazı */
+  color: var(--accent);
+  /* Kırmızı yazı */
   min-width: 100px;
   line-height: 1;
 }
+
 .timeline-text {
   font-size: 16px;
   color: var(--text-secondary);
@@ -158,27 +251,36 @@
    MOBİL UYUMLULUK (RESPONSIVE)
 ========================================= */
 @media (max-width: 900px) {
-  .pillars-grid { 
-    grid-template-columns: 1fr; 
+  .pillars-grid {
+    grid-template-columns: 1fr;
   }
-  .surd-photo-grid {
-    grid-template-columns: repeat(2, 1fr); /* Tablette yan yana 2 foto */
+
+  .handbook-split {
+    flex-direction: column;
+    padding: 32px 24px;
+    gap: 40px;
   }
 }
 
 @media (max-width: 600px) {
-  .surd-photo-grid {
-    grid-template-columns: 1fr; /* Mobilde alt alta tek foto */
-    margin-top: 0; /* Mobilde taşmayı iptal et */
+  .handbook-section {
+    margin-top: 0;
   }
+
+  .stats-list {
+    grid-template-columns: 1fr;
+  }
+
   .timeline-item {
     flex-direction: column;
     gap: 8px;
     padding: 24px 0;
   }
+
   .timeline-dot {
     top: 30px;
   }
+
   .timeline-year {
     font-size: 36px;
   }
