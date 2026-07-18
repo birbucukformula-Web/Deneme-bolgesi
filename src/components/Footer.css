@@ -4,11 +4,14 @@
   padding: 60px 0 0;
 }
 
+/* 4 Kolonlu Yeni Yerleşim Planı */
 .footer-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  /* 3 Kolona düşürdük, İletişim ve İkon alanı daha ferah yayılsın diye 1.5fr yaptık */
+  grid-template-columns: 2fr 1.5fr 1.5fr;
   gap: 48px;
-  padding-bottom: 48px;
+  padding-bottom: 120px;
+  align-items: flex-start;
 }
 
 .footer-logo {
@@ -30,35 +33,87 @@
 
 .footer-heading {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 13px;
   color: var(--accent);
   letter-spacing: 2px;
   text-transform: uppercase;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
-.footer-links ul { list-style: none; }
-.footer-links li { margin-bottom: 10px; }
-.footer-links a {
+/* 3-3 DİKEY DENGELİ KIRILIM SİHRİ */
+.footer-links ul { 
+  list-style: none; 
+  padding: 0;
+  margin: 0;
+  display: grid !important;
+  /* Yan yana tam 3 sütun açar, 6 link otomatik 3 dikey - 3 dikey hizalanır */
+  grid-template-columns: repeat(2, 1fr) !important; 
+  gap: 10px 5px !important; 
+}
+
+.footer-links li { 
+  margin-bottom: 5px !important; 
+}
+
+.footer-links a, .footer-contact a, .footer-mail a {
   color: var(--text-secondary);
   font-size: 15px;
+  text-decoration: none;
   transition: color 0.2s;
 }
-.footer-links a:hover { color: var(--text-primary); }
 
-.social-icons { display: flex; gap: 12px; flex-wrap: wrap; }
+.footer-links a:hover, .footer-contact a:hover, .footer-mail a:hover { 
+  color: var(--text-primary); 
+}
+
+
+
+/* Yeni Ayrılan İletişim Bloğu Stili */
+.footer-contact ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-mail {
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-family: var(--font-mono);
+}
+
+/* Sosyal Medya İkon Alanı */
+.social-icons { 
+  display: flex; 
+  gap: 12px; 
+  flex-wrap: wrap; 
+}
+
 .social-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
+  width: 32px;
+  height: 32px;
   font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 500;
   color: var(--text-secondary);
-  transition: border-color 0.2s, color 0.2s, box-shadow 0.2s, transform 0.3 s ease;
+  border-radius: 8px !important; 
+  overflow: hidden !important; 
+  transition: border-color 0.2s, color 0.2s, box-shadow 0.2s, transform 0.3s ease;
 }
+
+.footer-social-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important; 
+  display: block;
+  border-radius: 8px !important; 
+}
+
 .social-icon:active {
   transform: scale(1.15); 
 }
@@ -68,14 +123,15 @@
   color: var(--accent);
   box-shadow: 0 0 12px var(--accent-glow);
   transform: scale(1.08);
-
 }
 
 .footer-bottom {
   border-top: 1px solid rgba(255,255,255,0.07);
-  padding: 20px 24px;
+  padding: 24px;
+  margin-top: 60px; /* 20px olan bu değeri 60px yap */
   text-align: center;
 }
+
 .footer-bottom p {
   font-family: var(--font-mono);
   font-size: 12px;
@@ -83,10 +139,25 @@
   letter-spacing: 1px;
 }
 
-@media (max-width: 900px) {
-  .footer-grid { grid-template-columns: 1fr 1fr; }
-  .footer-brand { grid-column: 1 / -1; }
+/* MOBİL VE TABLET UYUMLULUĞU */
+@media (max-width: 1024px) {
+  .footer-grid { 
+    grid-template-columns: 1fr 1fr; /* Tablet ekranlarda 2-2 bölünür */
+    gap: 32px;
+  }
 }
+
+@media (max-width: 768px) {
+  .footer-links ul {
+    grid-template-columns: repeat(2, 1fr) !important; /* Mobilde linkler yan yana 2'li akar */
+  }
+}
+
 @media (max-width: 600px) {
-  .footer-grid { grid-template-columns: 1fr; }
+  .footer-grid { 
+    grid-template-columns: 1fr; /* Tam mobilde her alan alt alta şık bir liste olur */
+  }
+  .footer-brand { 
+    grid-column: 1 / -1; 
+  }
 }
