@@ -66,6 +66,73 @@
 .nav-link.active { color: #fff; }
 
 /* ===========================
+   MASAÜSTÜ DROPDOWN
+   =========================== */
+.has-dropdown {
+  position: relative;
+}
+.nav-link-text {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.dropdown-arrow {
+  display: inline-block;
+  border: solid currentColor;
+  border-width: 0 2px 2px 0;
+  padding: 3px;
+  transform: rotate(45deg);
+  margin-bottom: 2px;
+  margin-left: 4px;
+  transition: transform 0.2s;
+}
+.has-dropdown:hover .dropdown-arrow {
+  transform: rotate(-135deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #050505;
+  border: 1px solid rgba(255,255,255,0.05);
+  list-style: none;
+  min-width: 220px;
+  padding: 12px 0;
+  margin: 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+  border-radius: 4px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  z-index: 310;
+}
+.has-dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.dropdown-item {
+  display: block;
+  padding: 12px 20px;
+  color: rgba(255,255,255,0.75);
+  font-family: sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  text-transform: none;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+  letter-spacing: normal;
+}
+.dropdown-item:hover,
+.dropdown-item.active {
+  background: #111;
+  color: var(--accent);
+}
+
+/* ===========================
    HAMBURGER
    =========================== */
 .hamburger {
@@ -143,6 +210,63 @@
 .mobile-link.active {
   color: var(--accent);
   letter-spacing: 4px;
+}
+
+/* ===========================
+   MOBİL DROPDOWN (AKORDEON)
+   =========================== */
+.mobile-has-dropdown {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.mobile-dropdown-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+.mobile-dropdown-toggle {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.55);
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform 0.3s, color 0.2s;
+  padding: 10px;
+}
+.mobile-dropdown-toggle:hover { color: var(--accent); }
+.mobile-dropdown-toggle.open {
+  transform: rotate(180deg);
+  color: var(--accent);
+}
+
+.mobile-dropdown-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.4s ease, margin-top 0.4s ease;
+  margin-top: 0;
+}
+.mobile-dropdown-content.open {
+  max-height: 400px;
+  margin-top: 16px;
+}
+.mobile-dropdown-item {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.4);
+  transition: color 0.2s;
+}
+.mobile-dropdown-item:hover,
+.mobile-dropdown-item.active {
+  color: var(--accent);
 }
 
 /* Karanlık overlay — menü arkası */

@@ -7,55 +7,69 @@ import './Navbar.css'
 const base = import.meta.env.BASE_URL
 
 // ─── NAVİGASYON LİNKLERİ ─────────────────────────────────────────────────────
-// to   → React Router route'u
-// label → ekranda görünen metin
-// Yeni sayfa eklemek için buraya { to, label } nesnesi ekle
 const links = [
-  { to: '/',                  label: 'ANASAYFA'           },
-  { to: '/hakkimizda',        label: 'HAKKIMIZDA'         },
-  { to: '/araclarimiz',       label: 'ARAÇLARIMIZ'        },
-  { to: '/formulastudent',    label: 'FORMULA STUDENT'    },
-  { to: '/surdurulebilirlik', label: 'SÜRDÜRÜLEBİLİRLİK' },
-  { to: '/sponsorlar',        label: 'SPONSORLAR'         },
-  { to: '/oyun',              label: 'OYUN'               },
-  { to: '/iletisim',          label: 'İLETİŞİM'           },
+  { to: '/', label: 'ANASAYFA' },
+  { 
+    to: '#', 
+    label: 'HAKKIMIZDA',
+    subLinks: [
+      { to: '/hakkimizda', label: 'Biz Kimiz?' },
+      { to: '/formulastudent', label: 'Formula Student' },
+      { to: '/surdurulebilirlik', label: 'Sürdürülebilirlik' },
+      { to: '/oyun', label: 'Oyun' },
+    ]
+  },
+  { to: '/araclarimiz', label: 'ARAÇLARIMIZ' },
+  { to: '/sponsorlar', label: 'SPONSORLAR' },
+  { 
+    to: '#', 
+    label: 'TAKIMIMIZ',
+    subLinks: [
+      { to: '/ekip-uyeleri', label: 'Ekip Üyeleri' },
+      { to: '/galeri', label: 'Galeri' },
+    ]
+  },
+  { to: '/iletisim', label: 'İLETİŞİM' },
 ]
 
 export default function Navbar() {
   const [open, setOpen]         = useState(false)  // Mobil menü açık mı?
   const [scrolled, setScrolled] = useState(false)  // Sayfa aşağı kaydırıldı mı?
-  const { pathname }            = useLocation()    // Aktif route (sayfa değişimini algılar)
+  // Mobil menüdeki akordeonlar için
+  const [openSub, setOpenSub]   = useState(null)
+  const { pathname }            = useLocation()
 
   // Sayfa değişince mobil menüyü otomatik kapat
   useEffect(() => {
     setOpen(false)
+    setOpenSub(null)
   }, [pathname])
 
-  // Mobil menü açıkken body scroll'unu kilitle (arka plan kaymasın)
-  // cleanup fonksiyonu → bileşen kapanınca overflow'u sıfırla
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
   }, [open])
 
-  // Scroll pozisyonunu dinle → 40px geçilince navbar arka planı değişir
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
     window.addEventListener('scroll', onScroll)
-    return () => window.removeEventListener('scroll', onScroll) // Bellek sızıntısını önle
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const close  = () => setOpen(false)        // Menüyü kapat
-  const toggle = () => setOpen(o => !o)      // Menüyü aç/kapat
+  const close  = () => setOpen(false)
+  const toggle = () => setOpen(o => !o)
+
+  const toggleSub = (label) => {
+    setOpenSub(prev => prev === label ? null : label)
+  }
 
   return (
     <>
       {/* ── NAVBAR ÇUBUĞU ────────────────────────────────────────────────── */}
-      {/* scrolled true olunca CSS'de arka plan rengi değişir */}
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
         <div className="nav-inner">
 
-          {/* Logo — ana sayfaya yönlendirir */}
+          {/* Logo */}
           <NavLink to="/" className="nav-logo" onClick={close}>
             <img src={`${base}images/new-team-icon.png`} alt="1.5 Adana Formula Student" style={{ height: '40px', width: 'auto' }} />
           </NavLink>
@@ -63,28 +77,45 @@ export default function Navbar() {
           {/* Masaüstü navigasyon linkleri */}
           <ul className="nav-links">
             {links.map(l => (
-              <li key={l.to}>
-                {/* NavLink → aktif route'a otomatik "active" class'ı ekler */}
-                {/* end={l.to === '/'} → sadece tam "/" eşleşmesinde aktif say */}
-                <NavLink
-                  to={l.to}
-                  end={l.to === '/'}
-                  className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
-                >
-                  {l.label}
-                </NavLink>
+              <li key={l.label} className={l.subLinks ? 'has-dropdown' : ''}>
+                {l.to !== '#' ? (
+                  <NavLink
+                    to={l.to}
+                    end={l.to === '/'}
+                    className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
+                  >
+                    {l.label} {l.subLinks && <span className="dropdown-arrow"></span>}
+                  </NavLink>
+                ) : (
+                  <div className="nav-link nav-link-text">
+                    {l.label} <span className="dropdown-arrow"></span>
+                  </div>
+                )}
+
+                {/* Dropdown Menüsü */}
+                {l.subLinks && (
+                  <ul className="dropdown-menu">
+                    {l.subLinks.map(sub => (
+                      <li key={sub.label}>
+                        <NavLink to={sub.to} className="dropdown-item">
+                          {sub.label}
+                        </NavLink>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </li>
             ))}
           </ul>
 
-          {/* Hamburger butonu — sadece mobilde görünür (CSS ile) */}
+          {/* Hamburger butonu */}
           <button
             className={`hamburger ${open ? 'open' : ''}`}
             onClick={toggle}
             aria-label="Menüyü aç/kapat"
-            aria-expanded={open}   // Ekran okuyucular için erişilebilirlik
+            aria-expanded={open}
           >
-            <span />  {/* 3 span = hamburger çizgileri */}
+            <span />
             <span />
             <span />
           </button>
@@ -92,25 +123,59 @@ export default function Navbar() {
       </nav>
 
       {/* ── MOBİL MENÜ ───────────────────────────────────────────────────── */}
-      {/* open class'ı CSS animasyonunu tetikler */}
       <div className={`mobile-menu ${open ? 'open' : ''}`} aria-hidden={!open}>
         <ul>
           {links.map(l => (
-            <li key={l.to}>
-              <NavLink
-                to={l.to}
-                end={l.to === '/'}
-                className={({ isActive }) => isActive ? 'mobile-link active' : 'mobile-link'}
-                onClick={close}  // Link'e tıklayınca menüyü kapat
-              >
-                {l.label}
-              </NavLink>
+            <li key={l.label} className={l.subLinks ? 'mobile-has-dropdown' : ''}>
+              {l.subLinks ? (
+                <>
+                  <div className="mobile-dropdown-header" onClick={() => toggleSub(l.label)}>
+                    {l.to !== '#' ? (
+                      <NavLink
+                        to={l.to}
+                        end={l.to === '/'}
+                        className={({ isActive }) => isActive ? 'mobile-link active' : 'mobile-link'}
+                        onClick={(e) => {
+                          // Eğer alt menüsü varsa, tıklandığında sadece alt menüyü açsın istiyorsak:
+                          // e.preventDefault(); toggleSub(l.label);
+                          // Ama ana sayfaya da gitmesini istiyorsak bırakırız.
+                          // Kullanıcı deneyimi için mobilde ok simgesine basınca açılsın diye yapıyı bölebiliriz.
+                        }}
+                      >
+                        {l.label}
+                      </NavLink>
+                    ) : (
+                      <div className="mobile-link">{l.label}</div>
+                    )}
+                    <button className={`mobile-dropdown-toggle ${openSub === l.label ? 'open' : ''}`}>
+                      ▼
+                    </button>
+                  </div>
+                  {/* Akordeon içeriği */}
+                  <div className={`mobile-dropdown-content ${openSub === l.label ? 'open' : ''}`}>
+                    {l.subLinks.map(sub => (
+                      <NavLink key={sub.label} to={sub.to} className="mobile-dropdown-item" onClick={close}>
+                        {sub.label}
+                      </NavLink>
+                    ))}
+                  </div>
+                </>
+              ) : (
+                <NavLink
+                  to={l.to}
+                  end={l.to === '/'}
+                  className={({ isActive }) => isActive ? 'mobile-link active' : 'mobile-link'}
+                  onClick={close}
+                >
+                  {l.label}
+                </NavLink>
+              )}
             </li>
           ))}
         </ul>
       </div>
 
-      {/* Overlay — menü açıkken dışarıya tıklayınca kapatır */}
+      {/* Overlay */}
       {open && <div className="menu-overlay" onClick={close} />}
     </>
   )
