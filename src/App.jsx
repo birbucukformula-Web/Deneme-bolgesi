@@ -12,6 +12,7 @@ import Surdurulebilirlik from './pages/Surdurulebilirlik'
 import Sponsorlar from './pages/Sponsorlar'
 import Oyun from './pages/Oyun'
 import Iletisim from './pages/Iletisim'
+import Galeri from './pages/Galeri'
 import useScrollReveal from './hooks/useScrollReveal'
 
 function ScrollToTop() {
@@ -38,6 +39,7 @@ export default function App() {
           <Route path="/sponsorlar" element={<Sponsorlar />} />
           <Route path="/oyun" element={<Oyun />} />
           <Route path="/iletisim" element={<Iletisim />} />
+          <Route path="/galeri" element={<Galeri />} />
         </Routes>
       </main>
       <Footer />
