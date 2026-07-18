@@ -2,19 +2,13 @@
 import { Link } from 'react-router-dom'
 import './Sponsorlar.css'
 
-// import.meta.env.BASE_URL → vite.config.js'deki "base" değerini verir
-// GitHub Pages'te '/Deneme-bolgesi/' olur, local'de '/' olur
-// Görseller public/images/ altında olduğu için bu prefix ile doğru yola ulaşıyoruz
 const base = import.meta.env.BASE_URL
 
-// ─── SPONSOR KATEGORİLERİ ────────────────────────────────────────────────────
-// Her tier bir kategori: label (başlık), icon (emoji), cls (CSS sınıfı), sponsors (liste)
-// Yeni sponsor eklemek için ilgili tier'ın sponsors dizisine { name, logo, href } ekle
 const tiers = [
   {
     label: 'ANA SPONSORLAR',
     icon: '💎',
-    cls: 'tier-main', // CSS'de .tier-main sınıfına özel büyük kart stili var
+    cls: 'tier-main',
     sponsors: [
       { name: 'Emre Makina', logo: `${base}images/sponsor-images/emremak-güncel.png`, href: 'https://www.emremakinasan.com.tr/' },
       { name: 'Bomak',       logo: `${base}images/sponsor-images/bomak.png`,          href: 'https://bomak.com.tr/' },
@@ -24,10 +18,13 @@ const tiers = [
   {
     label: 'ALTIN SPONSORLAR',
     icon: '🥇',
-    cls: 'tier-gold',
+    cls: 'tier-main',
     sponsors: [
-      { name: 'Numesys', logo: `${base}images/sponsor-images/numesys.png`, href: 'https://www.numesys.com.tr/' },
-      { name: 'Temsa',   logo: `${base}images/sponsor-images/temsa.png`,   href: 'https://www.temsa.com/tr/tr' },
+      { name: 'Numesys',   logo: `${base}images/sponsor-images/numesys.png`,   href: 'https://www.numesys.com.tr/' },
+      { name: 'Avioni',    logo: `${base}images/sponsor-images/avioni_logo.png`, href: 'https://avionitech.com//' },
+      { name: 'OnPlus',    logo: `${base}images/sponsor-images/onplus-sitelogo.png`, href: 'https://www.onplus.com.tr/' },
+      { name: 'Germaksan', logo: `${base}images/sponsor-images/germaksan-logo.jpg`, href: 'https://germaksan.com.tr/' },
+      { name: 'NoktaDil',  logo: `${base}images/sponsor-images/noktadil-logo.jpg`, href: 'https://www.noktadil.com.tr/' }
     ],
   },
   {
@@ -38,6 +35,12 @@ const tiers = [
       { name: 'KORDSA',            logo: `${base}images/sponsor-images/kordsa.png`,            href: 'https://kordsa.com/tr' },
       { name: 'İstanbul Filament', logo: `${base}images/sponsor-images/istanbul filament.png`, href: 'https://www.istanbulfilament.com/' },
       { name: 'KY Kırtasiye',      logo: `${base}images/sponsor-images/ky-kirtasiye.png`,      href: 'https://www.kykirtasiye.com/' },
+      { name: 'Boğaziçi Yazılım',  logo: `${base}images/sponsor-images/boazici-yazilim-logo.png`, href: 'https://www.bogaziciyazilim.com/' },
+      { name: 'Cubicl',            logo: `${base}images/sponsor-images/cubicl-logo.png`, href: 'https://cubicl.io/tr' },
+      { name: 'Makersan',          logo: `${base}images/sponsor-images/makersan-logo.jpeg`, href: 'https://www.makersan.com.tr/' },
+      { name: 'Ateks',             logo: `${base}images/sponsor-images/ateks-logo.png`, href: 'https://www.ateks.international/anasayfa-muhendislik' },
+      { name: 'Şifa Ana',          logo: `${base}images/sponsor-images/sifa-ana-logo.png`, href: 'https://www.sifaana.com.tr/' },
+      { name: 'Petka',             logo: `${base}images/sponsor-images/petka-logo.png`, href: 'https://www.petkakalip.com.tr/' },
     ],
   },
   {
@@ -48,12 +51,28 @@ const tiers = [
       { name: 'Giriş Kırtasiye', logo: `${base}images/sponsor-images/giris-kirtasiye.png`, href: 'https://example10.com' },
       { name: 'GSB',             logo: `${base}images/sponsor-images/gsb.png`,             href: 'https://gsb.gov.tr/tr' },
       { name: 'Bilgehan Mak',    logo: `${base}images/sponsor-images/bilgehanmak.png`,     href: 'https://www.bilgehanltd.com/' },
+      { name: 'ORS',             logo: `${base}images/sponsor-images/ors-logo.png`, href: 'https://www.ors.com.tr/' }, 
+    ],
+  },
+  {
+    label: 'DESTEKÇİ SPONSORLAR',
+    icon: '🤝',
+    cls: 'tier-other',
+    sponsors: [
+      { name: 'MSA',              logo: `${base}images/sponsor-images/MSA-logo.png`, href: 'https://msaglobalgumruk.com/' },
+      { name: 'Acımak',           logo: `${base}images/sponsor-images/acimak-logo.png`, href: 'https://www.acimak.com.tr/' },
+      { name: 'Cebeci',           logo: `${base}images/sponsor-images/cebeci-logo.png` },
+      { name: 'Temsa',            logo: `${base}images/sponsor-images/temsa.png`, href: 'https://www.temsa.com/tr/' },
+      { name: 'Tasargem',         logo: `${base}images/sponsor-images/tasargem-logo.png`, href: 'https://tasargem.com/' },
+      { name: 'Şanal Petrol',     logo: `${base}images/sponsor-images/sanalpetrol-logo.png` },
+      { name: 'Aslan Çelik Boru', logo: `${base}images/sponsor-images/aslancelik-logo.jpg`, href: 'https://www.aslancelikboru.com/' },
+      { name: 'Groseri',          logo: `${base}images/sponsor-images/groseri-logo.png`, href: 'https://www.groseri.com.tr/' },
+      { name: 'Dimes',            logo: `${base}images/sponsor-images/dimes-logo.png`, href: 'https://www.groseri.com.tr/' },
+      { name: 'Han Kahve',        logo: `${base}images/sponsor-images/hankahve-logo.jpg`, href: 'https://hankurukahvecisi.com/' }
     ],
   },
 ]
 
-// ─── SPONSORLUK AVANTAJLARI ──────────────────────────────────────────────────
-// "Neden sponsor olunmalı?" bölümünde gösterilen madde listesi
 const benefits = [
   { icon: '📢', text: 'Araç üzerinde logo görünürlüğü' },
   { icon: '📱', text: 'Sosyal medya tanıtımı' },
@@ -63,10 +82,6 @@ const benefits = [
   { icon: '🎥', text: 'Medya içeriklerinde sponsor tanıtımı' },
 ]
 
-// ─── SPONSOR KARTI BİLEŞENİ ──────────────────────────────────────────────────
-// s   → tek bir sponsor nesnesi { name, logo, href }
-// size → tier.cls değeri, kart boyutunu CSS'de belirler (tier-main, tier-gold vb.)
-// onError → logo yüklenemezse resmi gizler, sponsor adını yazı olarak gösterir
 function SponsorCard({ s, size }) {
   return (
     <a href={s.href} target="_blank" rel="noopener noreferrer" className={`sponsor-card card sponsor-card--${size}`}>
@@ -75,17 +90,14 @@ function SponsorCard({ s, size }) {
         alt={s.name}
         onError={e => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'block' }}
       />
-      {/* Logo yüklenemezse sponsor adı metin olarak görünür */}
       <span className="sponsor-name-fallback" style={{ display: 'none' }}>{s.name}</span>
     </a>
   )
 }
 
-// ─── ANA SAYFA BİLEŞENİ ──────────────────────────────────────────────────────
 export default function Sponsorlar() {
   return (
     <>
-      {/* ── HERO BÖLÜMÜ ─────────────────────────────────────────────────── */}
       <section className="page-hero sponsor-hero">
         <div className="container">
           <p className="section-label reveal">// SPONSORLAR</p>
@@ -100,14 +112,11 @@ export default function Sponsorlar() {
         </div>
       </section>
 
-      {/* ── NEDEN SPONSOR OLUNMALI? ──────────────────────────────────────── */}
       <section className="why-section">
         <div className="container">
           <p className="section-label reveal">// NEDEN SPONSOR OLUNMALI?</p>
           <div className="red-line reveal" />
           <div className="benefits-grid">
-            {/* benefits dizisini döngüyle render ediyoruz */}
-            {/* Math.min ile reveal-delay en fazla 4 oluyor (CSS'de 4'ten fazlası tanımlı değil) */}
             {benefits.map((b, i) => (
               <div key={i} className={`benefit-item reveal reveal-delay-${Math.min(i + 1, 4)}`}>
                 <span className="benefit-icon">{b.icon}</span>
@@ -118,13 +127,11 @@ export default function Sponsorlar() {
         </div>
       </section>
 
-      {/* ── SPONSOR LOGO KATEGORİLERİ ───────────────────────────────────── */}
       <section className="sponsors-section">
         <div className="container">
           <p className="section-label reveal">// DESTEKÇİLERİMİZ</p>
           <div className="red-line reveal" />
 
-          {/* tiers dizisini döngüyle her kategori için bir blok oluştur */}
           {tiers.map(tier => (
             <div key={tier.label} className={`tier-block reveal ${tier.cls}`}>
               <div className="tier-header">
@@ -132,7 +139,6 @@ export default function Sponsorlar() {
                 <span className="tier-label">{tier.label}</span>
               </div>
 
-              {/* Eğer o kategoride sponsor varsa kartları göster, yoksa bekleniyor mesajı */}
               {tier.sponsors.length ? (
                 <div className={`sponsors-row sponsors-row--${tier.cls}`}>
                   {tier.sponsors.map(s => (
@@ -151,8 +157,6 @@ export default function Sponsorlar() {
         </div>
       </section>
 
-      {/* ── SPONSOR OL CTA (Call to Action) ─────────────────────────────── */}
-      {/* İletişim sayfasına yönlendiren buton */}
       <section className="sponsor-cta-section">
         <div className="container">
           <div className="sponsor-cta-box reveal">

@@ -45,75 +45,68 @@
 .tier-gold .tier-label   { color: #FFD700; }
 .tier-silver .tier-label { color: #C0C0C0; }
 .tier-bronze .tier-label { color: #CD7F32; }
+.tier-other .tier-label  { color:#6c757d; } /* Diğer Sponsorlar için nötr renk */
 
 /* GRID YAPI (KİMLER YAN YANA DURACAK) */
 .sponsors-row {
   display: grid;
   gap: 20px;
 }
-/* Ana sponsorlar devasa, yan yana en fazla 2 tane */
-.sponsors-row--tier-main   { grid-template-columns: repeat(2, 1fr); }
-.sponsors-row--tier-gold   { grid-template-columns: repeat(3, 1fr); }
-.sponsors-row--tier-silver { grid-template-columns: repeat(4, 1fr); }
-.sponsors-row--tier-bronze { grid-template-columns: repeat(5, 1fr); }
+/* DOĞAL VE ORTALANMIŞ AKIŞKAN SATIR YAPISI */
+.sponsors-row--tier-main,
+.sponsors-row--tier-gold,
+.sponsors-row--tier-silver,
+.sponsors-row--tier-other,
+.sponsors-row--tier-bronze { 
+  display: flex !important;
+  flex-wrap: wrap !important;       /* Sığmayan logolar bir alt satıra doğalca geçsin */
+  justify-content: center !important; /* İŞTE ORTALAMAYI SAĞLAYAN SİHİRLİ SATIR */
+  gap: 20px !important;              /* Kutuların arasındaki ideal boşluk */
+}
 
-/* SPONSOR KARTLARI KESİN ÇÖZÜM */
 .sponsor-card {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px !important; /* Boşluğu neredeyse sıfırladık */
-  background: var(--bg);
-  border: 1px solid var(--border);
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  
+  /* BOYUT KİBARLAŞTIRILDI: Göz yormayan şık küçük kareler */
+  width: 150px !important; 
+  aspect-ratio: 1 / 1; 
+  height: auto !important;
+  padding: 12px !important; 
+  border-width: 2px !important;
+  background: #ffffff !important; 
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 8px;
+  
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
+  
   overflow: hidden;
+  box-sizing: border-box !important;
 }
 
 .sponsor-card img { 
   width: 100% !important; 
-  height: 100% !important; /* Kutuyu tamamen doldurmaya zorla */
-  object-fit: contain !important; /* Oranı bozmadan sığdır */
-  filter: grayscale(80%) opacity(0.8);
-  transition: all 0.3s ease; 
+  height: 100% !important; 
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important; 
+  
 }
 
-.sponsor-card:hover img { 
-  filter: grayscale(0) opacity(1);
-  transform: scale(1.1) !important; /* Hover olunca daha da büyüsün */
+.sponsor-card:hover,
+.sponsor-card:active {
+  background: #ffffff !important;
+  border-color: var(--accent) !important; /* Çizgi takımı rengine (kırmızı) döner */
+  box-shadow: 0 0 15px rgba(234, 32, 39, 0.2) !important; 
+  transform: translateY(-4px);
 }
 
-/* ANA SPONSOR - DEVASA BOYUT */
-.sponsor-card--tier-main { 
-  height: 250px !important; /* Kutuyu büyüttük */
+.sponsor-card:hover img,
+.sponsor-card:active img { 
+  filter: grayscale(0) brightness(1) opacity(1);
+  transform: scale(1.03) !important; 
 }
-.sponsor-card--tier-main img { 
-  max-height: 230px !important; /* Logoya devasa bir alan verdik */
-}
-
-/* ALTIN SPONSOR */
-.sponsor-card--tier-gold { height: 180px !important; }
-.sponsor-card--tier-gold img { max-height: 160px !important; }
-
-/* GÜMÜŞ SPONSOR */
-.sponsor-card--tier-silver { height: 140px !important; }
-.sponsor-card--tier-silver img { max-height: 120px !important; }
-
-/* BRONZ SPONSOR */
-.sponsor-card--tier-bronze { height: 110px !important; }
-.sponsor-card--tier-bronze img { max-height: 90px !important; }
-
-/* KART BOYUTLARI (TIER'E GÖRE) */
-.sponsor-card--tier-main { min-height: 200px; padding: 40px; }
-.sponsor-card--tier-main img { max-height: 140px; } /* Devasa Logo */
-
-.sponsor-card--tier-gold { min-height: 160px; }
-.sponsor-card--tier-gold img { max-height: 100px; }
-
-.sponsor-card--tier-silver { min-height: 120px; }
-.sponsor-card--tier-silver img { max-height: 80px; }
-
-.sponsor-card--tier-bronze { min-height: 100px; padding: 20px; }
-.sponsor-card--tier-bronze img { max-height: 60px; }
 
 .sponsor-name-fallback {
   font-family: var(--font-display);
@@ -137,21 +130,25 @@
 
 /* MOBİL UYUMLULUK */
 @media (max-width: 1024px) {
-  .sponsors-row--tier-silver { grid-template-columns: repeat(3, 1fr); }
-  .sponsors-row--tier-bronze { grid-template-columns: repeat(4, 1fr); }
+  .sponsors-row--tier-main,
+  .sponsors-row--tier-gold,
+  .sponsors-row--tier-silver,
+  .sponsors-row--tier-bronze { grid-template-columns: repeat(3, 1fr) !important; }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .benefits-grid { grid-template-columns: repeat(2, 1fr); }
-  .sponsors-row--tier-main   { grid-template-columns: 1fr; } /* Mobilde ana sponsorlar alt alta devasa */
-  .sponsors-row--tier-gold   { grid-template-columns: repeat(2, 1fr); }
-  .sponsors-row--tier-silver { grid-template-columns: repeat(2, 1fr); }
-  .sponsors-row--tier-bronze { grid-template-columns: repeat(3, 1fr); }
+  .sponsors-row--tier-main,
+  .sponsors-row--tier-gold,
+  .sponsors-row--tier-silver,
+  .sponsors-row--tier-bronze { grid-template-columns: repeat(2, 1fr) !important; }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 480px) {
   .benefits-grid { grid-template-columns: 1fr; }
-  .sponsors-row--tier-gold   { grid-template-columns: 1fr; }
-  .sponsors-row--tier-silver { grid-template-columns: 1fr; }
-  .sponsors-row--tier-bronze { grid-template-columns: repeat(2, 1fr); }
+  .sponsors-row--tier-main,
+  .sponsors-row--tier-gold,
+  .sponsors-row--tier-silver,
+  .sponsors-row--tier-bronze { grid-template-columns: repeat(2, 1fr) !important; } 
+  /* Mobilde de çok devasa olmamaları için yan yana 2 tane kare kalması en iyisidir */
 }
