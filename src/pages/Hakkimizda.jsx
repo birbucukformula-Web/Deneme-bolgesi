@@ -49,7 +49,7 @@ export default function Hakkimizda() {
           <div className="story-img reveal reveal-delay-2">
             {/* Takım Çalışma Anı Görseli */}
             <img
-              src="/src/assets/images/takim1.jpeg"
+              src={`${import.meta.env.BASE_URL}images/formula_students.jpg`}
               alt="Takım çalışma anı"
               onError={e => { e.target.parentElement.classList.add('img-placeholder') }}
             />
@@ -63,7 +63,7 @@ export default function Hakkimizda() {
       <section className="vision-mission-section">
         <div className="container">
           <div className="vm-grid">
-            
+
             {/* Vizyonumuz */}
             <div className="vm-card card reveal">
               <div className="vm-icon">🔭</div>
@@ -97,17 +97,17 @@ export default function Hakkimizda() {
         <div className="container">
           <p className="section-label reveal">// ATÖLYEMİZ</p>
           <div className="red-line reveal" />
-          
+
           <div className="workshop-grid mt-32">
             <div className="workshop-img-wrapper reveal">
               {/* EDIT: Atölye fotoğrafının yolunu buraya ekle */}
-              <img 
-                src="/src/assets/images/hakkimizda-images/hakkimizda2.jpg" 
-                alt="Atölyemiz" 
+              <img
+                src={`${import.meta.env.BASE_URL}images/atolyemiz.jpg`}
+                alt="Atölyemiz"
                 className="workshop-main-img"
               />
             </div>
-            
+
             <div className="workshop-text reveal reveal-delay-2">
               <h2>Üretimin<br /><span className="text-red">Kalbi</span></h2>
               <p className="mt-24 text-secondary" style={{ lineHeight: '1.9' }}>

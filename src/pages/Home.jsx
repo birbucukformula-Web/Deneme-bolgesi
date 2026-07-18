@@ -3,21 +3,20 @@ import './Home.css'
 
 /* EDIT: Add your actual captain photos to src/assets/images/ */
 const captains = [
-  { name: 'Ahmet Göksel Durmaz', title: 'Takım Kaptanı',         photo: 'https://birbucukadanaformula.com/images/team_leader.jpg' },
-  { name: 'Mustafa Mert Abbak',  title: 'Mekanik Departmanı',     photo: 'https://birbucukadanaformula.com/images/mechanic_leader.jpg' },
-  { name: 'Demir Torun',         title: 'Elektrik Departmanı',    photo: 'https://birbucukadanaformula.com/images/demir.png' },
-  { name: 'Alp Kağan Manga',     title: 'Sponsorluk Departmanı', photo: 'https://birbucukadanaformula.com/images/alp.png' },
-  { name: 'Necdet Özdemir',      title: 'Yazılım Departmanı',     photo: 'https://birbucukadanaformula.com/images/software_leader.jpg' },
+  { name: 'Ahmet Göksel Durmaz', title: 'Takım Kaptanı', photo: 'https://birbucukadanaformula.com/images/team_leader.jpg' },
+  { name: 'Mustafa Mert Abbak', title: 'Mekanik Departmanı', photo: 'https://birbucukadanaformula.com/images/mechanic_leader.jpg' },
+  { name: 'Demir Torun', title: 'Elektrik Departmanı', photo: 'https://birbucukadanaformula.com/images/demir.png' },
+  { name: 'Necdet Özdemir', title: 'Yazılım Departmanı', photo: 'https://birbucukadanaformula.com/images/software_leader.jpg' },
 ]
 
 const stats = [
   { value: '2023', label: 'Kuruluş Yılı' },
-  { value: '5+',   label: 'Departman'    },
-  { value: 'FSG',  label: 'Yarışma'      },
+  { value: '25+', label: 'Üye' },
+  { value: 'FST', label: 'Yarışma' },
 ]
 
 function CaptainCard({ c, delay }) {
-  const initials = c.name.split(' ').slice(0,2).map(n => n[0]).join('')
+  const initials = c.name.split(' ').slice(0, 2).map(n => n[0]).join('')
   return (
     <div className={`captain-card card reveal reveal-delay-${delay}`}>
       <div className="captain-photo-wrap">
@@ -70,7 +69,7 @@ export default function Home() {
             <div className="car-teaser-text reveal">
               <p className="section-label">// 2026 ARACIMIZ</p>
               <div className="red-line" />
-              <h2>Yarışa Hazır.<br/>Sınırları Zorluyor.</h2>
+              <h2>Yarışa Hazır.<br />Sınırları Zorluyor.</h2>
               <p className="mt-16 text-secondary">
                 Mühendislik, tutku ve kodun birleştiği 2026 aracımız — her detayı takımımız tarafından tasarlandı.
               </p>
@@ -89,10 +88,10 @@ export default function Home() {
           <div className="reveal">
             <p className="section-label">// FORMULA STUDENT NEDİR?</p>
             <div className="red-line" />
-            <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)' }}>Mühendisliğin<br/>Yarış Pistindeki<br/><span className="text-red">Sınavı</span></h2>
+            <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)' }}>Mühendisliğin<br />Yarış Pistindeki<br /><span className="text-red">Sınavı</span></h2>
             <p className="mt-24 text-secondary" style={{ fontSize: '16px', lineHeight: '1.8' }}>
-              Formula Student, dünya genelinde üniversite öğrencilerinin tek kişilik yarış araçları tasarladığı, 
-              ürettiği ve yarıştırdığı uluslararası bir mühendislik yarışmasıdır. Teknik mükemmeliyetin 
+              Formula Student, dünya genelinde üniversite öğrencilerinin tek kişilik yarış araçları tasarladığı,
+              ürettiği ve yarıştırdığı uluslararası bir mühendislik yarışmasıdır. Teknik mükemmeliyetin
               ötesinde, pazarlama, maliyet optimizasyonu ve iş planlaması da değerlendirilir.
             </p>
           </div>
