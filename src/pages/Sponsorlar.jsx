@@ -21,10 +21,10 @@ const tiers = [
     icon: '🥈',
     cls: 'tier-silver',
     sponsors: [
-      { name: 'Ateks', logo: 'ateks-logo.png', href: 'https://www.ateks.international/anasayfa-muhendislik' },
+      { name: 'Boğaziçi Yazılım', logo: 'boazici-yazilim-logo.png', href: 'https://www.bogaziciyazilim.com/' },
       { name: 'Cubicl', logo: 'cubicl-logo.png', href: 'https://cubicl.io/tr' },
       { name: 'Makersan', logo: 'makersan-logo.jpeg', href: 'https://www.makersan.com.tr/' },
-      { name: 'Boğaziçi Yazılım', logo: 'boazici-yazilim-logo.png', href: 'https://www.bogaziciyazilim.com/' },
+      { name: 'Ateks', logo: 'ateks-logo.png', href: 'https://www.ateks.international/anasayfa-muhendislik' },
       { name: 'Şifa Ana', logo: 'sifa-ana-logo.png', href: 'https://www.sifaana.com.tr/' },
       { name: 'Petka', logo: 'petka-logo.png', href: 'https://www.petkakalip.com.tr/' },
     ],
@@ -36,7 +36,6 @@ const tiers = [
     sponsors: [
       { name: 'ORS', logo: 'ors-logo.png', href: 'https://www.ors.com.tr/' }, 
       { name: 'BeautyMax', logo: 'beautymax.jpg' },
-      { name: 'GSB', logo: 'gsb.png', href: 'https://gsb.gov.tr/tr' },
     ],
   },
   {
@@ -44,9 +43,16 @@ const tiers = [
     icon: '🤝',
     cls: 'tier-other',
     sponsors: [
-      { name: 'Giriş Kırtasiye', logo: 'giris-kirtasiye.png', href: 'https://example10.com' },
-      { name: 'GSB', logo: 'gsb.png', href: 'https://gsb.gov.tr/tr' },
-      { name: 'Bilgehan Mak', logo: 'bilgehanmak.png', href: 'https://www.bilgehanltd.com/' },
+      { name: 'MSA', logo: 'MSA-logo.png', href: 'https://msaglobalgumruk.com/' },
+      { name: 'Acımak', logo: 'acimak-logo.png', href: 'https://www.acimak.com.tr/' },
+      { name: 'Cebeci', logo: 'cebeci-logo.png' },
+      { name: 'Temsa', logo: 'temsa.png', href: 'https://www.temsa.com/tr/' },
+      { name: 'Tasargem', logo: 'tasargem-logo.png', href: 'https://tasargem.com/' },
+      { name: 'Şanal Petrol', logo: 'sanalpetrol-logo.png' },
+      { name: 'Aslan Çelik Boru', logo: 'aslancelik-logo.jpg', href: 'https://www.aslancelikboru.com/' },
+      { name: 'Groseri', logo: 'groseri-logo.png', href: 'https://www.groseri.com.tr/' },
+      { name: 'Dimes', logo: 'dimes-logo.png', href: 'https://www.groseri.com.tr/' },
+      { name: 'Han Kahve', logo: 'hankahve-logo.jpg', href: 'https://hankurukahvecisi.com/' }
     ],
   },
 ]

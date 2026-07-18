@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import './Footer.css'
-import logo from '../assets/images/team_logo_footer_1.png'
+import logo from '../assets/images/team-logo.png'
 import InstagramIcon from '../assets/images/Instagram_icon.png'
 import LinkedInIcon from '../assets/images/LinkedIn_icon.png'
 import TikTokIcon from '../assets/images/tiktok-icon.png'

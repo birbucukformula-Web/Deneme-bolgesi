@@ -109,7 +109,6 @@ export default function Iletisim() {
           </div>
           <div className="map-address reveal reveal-delay-1">
             <span className="section-label">📍 ADRES</span>
-            {/* EDIT: Gerçek adresi buraya ekle */}
             <p className="text-secondary mt-8" style={{ fontSize: '16px' }}>
               Çukurova Üniversitesi Tömer Binası
             </p>

@@ -74,17 +74,15 @@
   aspect-ratio: 1 / 1; 
   height: auto !important;
   padding: 12px !important; 
-  
+  border-width: 2px !important;
   background: #ffffff !important; 
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 8px;
   
-  /* DERİNLİK EFEKTİ: Beyaz kartların çiğ parlamasını engelleyen yumuşak dış gölge */
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
   
   overflow: hidden;
   box-sizing: border-box !important;
-  transition: all 0.3s ease !important;
 }
 
 .sponsor-card img { 
@@ -93,12 +91,21 @@
   max-width: 100% !important;
   max-height: 100% !important;
   object-fit: contain !important; 
+  
 }
 
+.sponsor-card:hover,
+.sponsor-card:active {
+  background: #ffffff !important;
+  border-color: var(--accent) !important; /* Çizgi takımı rengine (kırmızı) döner */
+  box-shadow: 0 0 15px rgba(234, 32, 39, 0.2) !important; 
+  transform: translateY(-4px);
+}
 
-.sponsor-card:hover img { 
-  filter: grayscale(0) opacity(1);
-  transform: scale(1.05) !important; 
+.sponsor-card:hover img,
+.sponsor-card:active img { 
+  filter: grayscale(0) brightness(1) opacity(1);
+  transform: scale(1.03) !important; 
 }
 
 .sponsor-name-fallback {
