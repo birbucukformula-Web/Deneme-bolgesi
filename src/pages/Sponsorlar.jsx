@@ -6,21 +6,10 @@ const base = import.meta.env.BASE_URL
 
 const tiers = [
   {
-    label: 'ANA SPONSORLAR',
-    icon: '💎',
-    cls: 'tier-main',
-    sponsors: [
-      { name: 'Emre Makina', logo: `${base}images/sponsor-images/emremak-güncel.png`, href: 'https://www.emremakinasan.com.tr/' },
-      { name: 'Bomak',       logo: `${base}images/sponsor-images/bomak.png`,          href: 'https://bomak.com.tr/' },
-      { name: 'Beauty Max',  logo: `${base}images/sponsor-images/beautymax.jpg`,      href: 'https://example3.com' },
-    ],
-  },
-  {
     label: 'ALTIN SPONSORLAR',
     icon: '🥇',
     cls: 'tier-main',
     sponsors: [
-      { name: 'Numesys',   logo: `${base}images/sponsor-images/numesys.png`,   href: 'https://www.numesys.com.tr/' },
       { name: 'Avioni',    logo: `${base}images/sponsor-images/avioni_logo.png`, href: 'https://avionitech.com//' },
       { name: 'OnPlus',    logo: `${base}images/sponsor-images/onplus-sitelogo.png`, href: 'https://www.onplus.com.tr/' },
       { name: 'Germaksan', logo: `${base}images/sponsor-images/germaksan-logo.jpg`, href: 'https://germaksan.com.tr/' },
@@ -32,9 +21,6 @@ const tiers = [
     icon: '🥈',
     cls: 'tier-silver',
     sponsors: [
-      { name: 'KORDSA',            logo: `${base}images/sponsor-images/kordsa.png`,            href: 'https://kordsa.com/tr' },
-      { name: 'İstanbul Filament', logo: `${base}images/sponsor-images/istanbul filament.png`, href: 'https://www.istanbulfilament.com/' },
-      { name: 'KY Kırtasiye',      logo: `${base}images/sponsor-images/ky-kirtasiye.png`,      href: 'https://www.kykirtasiye.com/' },
       { name: 'Boğaziçi Yazılım',  logo: `${base}images/sponsor-images/boazici-yazilim-logo.png`, href: 'https://www.bogaziciyazilim.com/' },
       { name: 'Cubicl',            logo: `${base}images/sponsor-images/cubicl-logo.png`, href: 'https://cubicl.io/tr' },
       { name: 'Makersan',          logo: `${base}images/sponsor-images/makersan-logo.jpeg`, href: 'https://www.makersan.com.tr/' },
@@ -48,10 +34,8 @@ const tiers = [
     icon: '🥉',
     cls: 'tier-bronze',
     sponsors: [
-      { name: 'Giriş Kırtasiye', logo: `${base}images/sponsor-images/giris-kirtasiye.png`, href: 'https://example10.com' },
-      { name: 'GSB',             logo: `${base}images/sponsor-images/gsb.png`,             href: 'https://gsb.gov.tr/tr' },
-      { name: 'Bilgehan Mak',    logo: `${base}images/sponsor-images/bilgehanmak.png`,     href: 'https://www.bilgehanltd.com/' },
-      { name: 'ORS',             logo: `${base}images/sponsor-images/ors-logo.png`, href: 'https://www.ors.com.tr/' }, 
+      { name: 'ORS',             logo: `${base}images/sponsor-images/ors-logo.png`, href: 'https://www.ors.com.tr/' },
+      { name: 'Beauty Max',  logo: `${base}images/sponsor-images/beautymax.jpg`,      href: 'https://example3.com' }
     ],
   },
   {
@@ -66,8 +50,9 @@ const tiers = [
       { name: 'Tasargem',         logo: `${base}images/sponsor-images/tasargem-logo.png`, href: 'https://tasargem.com/' },
       { name: 'Şanal Petrol',     logo: `${base}images/sponsor-images/sanalpetrol-logo.png` },
       { name: 'Aslan Çelik Boru', logo: `${base}images/sponsor-images/aslancelik-logo.jpg`, href: 'https://www.aslancelikboru.com/' },
+      { name: 'Şef Kebapsef', logo: `${base}images/sponsor-images/sefkebap-logo.webp`, href: 'https://www.sefkebap.com/' },
       { name: 'Groseri',          logo: `${base}images/sponsor-images/groseri-logo.png`, href: 'https://www.groseri.com.tr/' },
-      { name: 'Dimes',            logo: `${base}images/sponsor-images/dimes-logo.png`, href: 'https://www.groseri.com.tr/' },
+      { name: 'Dimes',            logo: `${base}images/sponsor-images/dimes-logo.png`, href: 'https://www.dimes.com.tr/' },
       { name: 'Han Kahve',        logo: `${base}images/sponsor-images/hankahve-logo.jpg`, href: 'https://hankurukahvecisi.com/' }
     ],
   },
